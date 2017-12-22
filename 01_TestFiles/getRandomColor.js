@@ -22,7 +22,7 @@ function getRandomColor() {
         hexB = "0" + hexB;
     }
     
-    console.log("It works!!!");
+    //console.log("It works!!!");
 
     // creating the hex value by concatenatening the string values
     var hexColor = "#" + hexR + hexG + hexB;
