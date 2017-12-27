@@ -28,12 +28,6 @@
   <h1 id="title">Data, Robots, and Code</h1>
   <h2 id="subtitle">A webside dedicated to data-analysis, robotics and anything related to coding</h2>
 
-  <div w3-include-html="http://ec2-54-173-22-144.compute-1.amazonaws.com/intro.html"></div> 
-   
-  <script>
-    w3.includeHTML();
-  </script>
-   
   <!-- Tab links -->
   <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'ProjectBlog')">Project Blog</button>
@@ -44,6 +38,9 @@
   <div id="ProjectBlog" class="tabcontent">
     <h3>Project Blog</h3>	
     <p>Blog posts to be added.</p>
+  
+    <div w3-include-html="http://ec2-54-173-22-144.compute-1.amazonaws.com/B01_Intro.html"></div> 
+
   </div>
 
   <div id="CodeLibrary" class="tabcontent">
@@ -64,5 +61,9 @@
   <!-- <script type="text/javascript" src="getRandomColor.js"></script> -->
   <!-- <script type="text/javascript" src="randomBackgroundColor.js"></script> -->
 	
+  <script>
+    w3.includeHTML();
+  </script>
+
 </body>
 </html>
