@@ -14,6 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="styleWide.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="styleNarrow.css" media="screen and (max-width: 600px)" />	
+  <link rel="stylesheet" type="text/css" href="submenu.css" media="screen" />
 </head>
 
 
@@ -33,34 +34,44 @@
     <button class="tablinks" onclick="openTab(event, 'ProjectBlog')">Project Blog</button>
     <button class="tablinks" onclick="openTab(event, 'CodeLibrary')">Code Library</button>    
   </div>
-
-  <!-- Tab content -->
-  <div id="ProjectBlog" class="tabcontent">
-    <h3>Project Blog</h3>	
-    <!-- <p>Blog posts to be added.</p> -->
   
-    <div w3-include-html="http://ec2-54-173-22-144.compute-1.amazonaws.com/B01_Intro.html"></div> 
-    <div w3-include-html="http://ec2-54-173-22-144.compute-1.amazonaws.com/B02_JavaOCA.html"></div> 
+  <!-- Submenu -->
+  <div id="left">Side menu</div>
 
+  <!-- Content frame -->
+  <div id="right">
+  
+	  <!-- Tab content -->
+	  
+	    <!-- Blog content -->
+	    <div id="ProjectBlog" class="tabcontent">
+		  <h3>Project Blog</h3>			  
+	  
+		  <div w3-include-html="http://ec2-54-173-22-144.compute-1.amazonaws.com/B01_Intro.html"></div> 
+		  <div w3-include-html="http://ec2-54-173-22-144.compute-1.amazonaws.com/B02_JavaOCA.html"></div> 
+
+	    </div>
+  
+		<!-- Code references -->
+		<div id="CodeLibrary" class="tabcontent">
+		  <h3>CodeLibrary</h3>
+		  <p>This is where I share my code libraries and code cheat sheets. I would not recommend simply copy and pasting these, it's best to create your own as you get more familiar with a language. Though reading through summaries that other people created can help discover new functionality you may not have been familiar with previously and/or learn new tricks!</p> 
+			
+		  <!-- Embed Google doc - VIM -->	
+		  <p>Vim Code Reference</p>
+		  <iframe src="https://docs.google.com/document/d/e/2PACX-1vTdFqvy_fIlg5b0hVQJuoNVQ3MtZHh3wfqffpnseH0mkS9xJdCuyYYHP6DPMGj_RHCU9CyEyijLeCiO/pub?embedded=true"  height="550" style="position: relative; width: 100%;"></iframe>
+		  
+		  <!-- Embed Google doc - R -->	
+		  <p>R Code Reference</p>
+		  <iframe src="https://docs.google.com/document/d/e/2PACX-1vTUcNnshZzjKLz6rpWF160aczcj6RS5AIvPfp-J0n50ywhPNC81OEel8MYOdQ85RJuyG_fBx1QheNUZ/pub?embedded=true"  height="550" style="position: relative; width: 100%;"></iframe>
+		  
+		  <!-- Embed Google doc - OCA -->	
+		  <p>Java - OCA Exam Code Reference</p>
+		  <iframe src="https://docs.google.com/document/d/e/2PACX-1vQ-tA1pCjgB7UKmRrbDEa_f9_kr42bC8ywqwiQ1RseuanaiKmrMOuedA8rR8ra9TireLDR7Uh0m3mSt/pub?embedded=true" height="550" style="position: relative; width: 100%;"></iframe>
+		  </div>
+		 
   </div>
-
-  <div id="CodeLibrary" class="tabcontent">
-    <h3>CodeLibrary</h3>
-    <p>This is where I share my code libraries and code cheat sheets. I would not recommend simply copy and pasting these, it's best to create your own as you get more familiar with a language. Though reading through summaries that other people created can help discover new functionality you may not have been familiar with previously and/or learn new tricks!</p> 
-	
-  <!-- Embed Google doc - VIM -->	
-  <p>Vim Code Reference</p>
-  <iframe src="https://docs.google.com/document/d/e/2PACX-1vTdFqvy_fIlg5b0hVQJuoNVQ3MtZHh3wfqffpnseH0mkS9xJdCuyYYHP6DPMGj_RHCU9CyEyijLeCiO/pub?embedded=true"  height="550" style="position: relative; width: 100%;"></iframe>
   
-  <!-- Embed Google doc - R -->	
-  <p>R Code Reference</p>
-  <iframe src="https://docs.google.com/document/d/e/2PACX-1vTUcNnshZzjKLz6rpWF160aczcj6RS5AIvPfp-J0n50ywhPNC81OEel8MYOdQ85RJuyG_fBx1QheNUZ/pub?embedded=true"  height="550" style="position: relative; width: 100%;"></iframe>
-  
-  <!-- Embed Google doc - OCA -->	
-  <p>Java - OCA Exam Code Reference</p>
-  <iframe src="https://docs.google.com/document/d/e/2PACX-1vQ-tA1pCjgB7UKmRrbDEa_f9_kr42bC8ywqwiQ1RseuanaiKmrMOuedA8rR8ra9TireLDR7Uh0m3mSt/pub?embedded=true" height="550" style="position: relative; width: 100%;"></iframe>
-  </div>
- 
   <!-- Add javascript -->
   <script type="text/javascript" src="openTab.js"></script>
   

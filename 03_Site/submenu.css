@@ -1,0 +1,15 @@
+
+#left {
+  float: left;
+  width: 20%;
+  height: 100%; 
+  padding: 6px 12px;	
+  //background: red;
+}
+#right {
+  float: right;
+  width: 80%;	
+  height: auto;
+  padding: 6px 12px;    
+  //background: blue;
+}
