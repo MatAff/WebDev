@@ -18,16 +18,12 @@ $output[]=$totalNews;
 $todayNews=mysql_fetch_assoc(mysql_query("SELECT COUNT(*) FROM basicnews WHERE timestamp >= DATE(CONVERT_TZ(NOW(), '+5:00','+0:00'));"));
 $output[]=$todayNews;
 
-# NOTIFICATIONS
-#$sql=mysql_query("SELECT * FROM notification WHERE timestamp > CONVERT_TZ(NOW(),'+4:30','+0:00');");
-$sql=mysql_query("SELECT timestamp, notice FROM notification ORDER BY noticeID DESC LIMIT 10;");
+$sql=mysql_query("SELECT * FROM notification WHERE timestamp > CONVERT_TZ(NOW(),'+4:30','+0:00');");
 if(!$sql){
 echo "Could not succesfully run query ($sql) from DB: " . mysql_error();
 }
 while($row=mysql_fetch_assoc($sql))
 $output[]=$row;
-
-# SHOW OUTPUT
 print(json_encode($output));
 mysql_close();
 ?>
