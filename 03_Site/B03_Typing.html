@@ -1,35 +1,35 @@
 <h4>Typing Tyrant</h4>
-Recently, I wrote a small program to help me develop my typing skills and I wanted to share do a code walk through. The idea behind the program is simple: stimulate myself to type more efficiently, by keeping track of my accuracy. I wanted this to run no matter what I'm working no, so I set it up as a console application that checks keys pressed in any application. To determine typing accuracy I keep track of how often the backspace key is pressed in comparison to other keys.  
+Recently, I wrote a simmple program to help me develop my typing skills, and I wanted to do a code walk through. The idea behind the program is simple: stimulate myself to type more efficiently, by keeping track of my typing accuracy. I wanted this to run no matter what I'm working no, so I set it up as a console application that checks keys pressed in any application. To determine typing accuracy, I keep track of how often the backspace key is pressed in comparison to other keys.  
 <br><br>
-I've have gone through different versions of this program, from ones that beeps every time the backspace keys is pressed to versions that keep track of accuracy over time and only beep when accuracy falls below a certain threshold. I have used some version of the program over the past couple months and I can definitely see progress. Because I'm constantly getting feedback on how accurately I'm typing, either from the program directly or because the people around ask me to type more accurately so they don't have to listen to the beeping. I've added the code to my github account and you can find it at <a href="https://github.com/MatAff/TypingTyrant">https://github.com/MatAff/TypingTyrant</a>. It's a relatively simple program written in c++ and all the code is stored in a single file. 
+I've have gone through different versions of this program, from ones that beeps every time the backspace keys is pressed, to versions that keep track of accuracy over time and only beep when accuracy falls below a certain threshold. I have used some version of the program over the past couple months, and I can definitely see progress. Because I'm constantly getting feedback on how accurately I'm typing, either from the program directly, or because the people around ask me to type more accurately so they don't have to listen to the beeping... I've added the code to my GitHub account and you can find it at <a href="https://github.com/MatAff/TypingTyrant">https://github.com/MatAff/TypingTyrant</a>. It's a relatively simple program written in c++, and all the code is stored in a single file. Let's look at some code! I would suggest pulling up the file on GitHub so you can follow along. 
 <br><br>
-The first step is checking if a key is pressed using a for loop and the GetAsyncKeyState() function. 
+The first step in the program is checking if a key is pressed using a for loop and the GetAsyncKeyState() function. 
 <pre>
     for (i = 8; i <= 190; i++) { <br>
         if (GetAsyncKeyState(i) == -32767) { … } <br>
     }
 </pre>
-Next we check if the key that's being pressed is the backspace key. Using the following code where 8 is the ASCII value associate with the backspace key. If the key pressed is not the backspace we simply increment the counter that keeps track of the number of keys pressed since the last time the backspace key was pressed. 
+Next we check if the key that's being pressed is the backspace key, using the following code where 8 is the ASCII value associate with the backspace key. If the key pressed is not the backspace we simply increment the counter that keeps track of the number of keys pressed since the last time the backspace key was pressed. 
 <pre>
     if (i == 8) { … }
 </pre>
-I'm counting multiple backspaces presses as one mistake, as a user may have typed several characters before you realizing they made a mistake, leading to multiple backspace presses at once before the mistake can be corrected. I'm doing this by calculating the difference between the current time and the last time the backspace key was pressed. If they are less then a certain threshold apart I ignore the current backspace press (currently I have the threshold value set to one second).
+I'm counting multiple backspaces presses as one mistake, as a user may have typed several characters before you realizing they made a mistake, leading to multiple backspace presses at quickly after each other before the mistake can be corrected. I'm doing this by calculating the difference between the current time and the last time the backspace key was pressed. If they are less then a certain threshold apart I ignore the current backspace press (currently I have the threshold value set to one second).
 <pre>  
     long timeDiff = getTime() - lastTime;
     if (timeDiff > 1000) { … // Time is in milliseconds
 </pre>
-If the backspace press does not follow a recent press we can process the press. This involves checking how many keys were pressed since the last backspace and updating the running averages. In the latest version (at the time of this writing), I'm keeping track of two average, a long term and a short term average. 
+If the backspace press does not follow a recent press we count it as a mistake, and process it accordingly. This involves checking how many keys were pressed since the last backspace and updating the running averages. In the latest version (at the time of this writing), I'm keeping track of two average, a long term and a short term average. 
 <pre>
     longRunningAvg = longRunningAvg * 0.75 + nrChar * 0.25;
     shortRunningAvg = shortRunningAvg * 0.5 + nrChar * 0.5;
 </pre>
-By keeping track of two averages I can use one as a goal and the other as 'current performance'. In the current version the goal is to keep the short term average, above the long term average. This might be a pretty challenging target, as it would imply the user would need to constantly improve their typing skills. I may make this more lenient in the future, but what I'm trying to achieve is an adaptive learning approach where the goal is constantly adjusted based on the user's performance, by making the goal both challenging and obtainable, giving the user constant motivation to improve. So what happens if the goal is not met? This is where the beeps come in, if the short-term average falls below the long-term average the program starts beeping every time backspace key is pressed. This gives the user an immediate reminder to focus on their typing accuracy. 
+By keeping track of two averages I can use one as a goal, and the other as 'current performance'. In the current version, the user aims to keep the short term average, above the long term average. This might be a pretty challenging target, as it would imply the user would need to constantly improve their typing skills. I may make this more lenient in the future, but what I'm trying to achieve, is an adaptive learning approach where the goal is constantly adjusted, based on the user's performance, and make the goal both challenging and obtainable, giving the user constant motivation to improve. So what happens if the goal is not met? This is where the beeps come in, if the short-term average falls below the long-term average the program starts beeping every time backspace key is pressed. This gives the user an immediate reminder to focus on their typing accuracy. 
 <pre>
     if (shortRunningAvg < longRunningAvg) {
         Beep(1000, 100);
     }
 </pre>
-And there you have it, a simple program that serves as your own personal Typing Tyrant and watches over you every key press. If you like the idea, feel free to grab a copy from GitHub, compile it and test it out for yourself! Let me know if you make any improvements I'd be excited to hear them out!
+And there you have it, a simple program, that serves as one's own personal Typing Tyrant that watches over you every key press. If you like the idea, feel free to grab a copy from GitHub, and test it out for yourself! Let me know if you make any improvements, I'd be excited to hear them out!
 <br><br>
 Happy typing!
 
