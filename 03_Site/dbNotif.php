@@ -28,6 +28,17 @@ while($row=mysql_fetch_assoc($sql))
 $output[]=$row;
 
 # SHOW OUTPUT
-print(json_encode($output));
+$formatted=json_encode($output);
+$formatted=str_replace("},{","\r\n",$formatted);
+$formatted=str_replace("[{","",$formatted);
+$formatted=str_replace("}]","",$formatted);
+#$formatted=str_replace(":","",$formatted);
+$formatted=str_replace(","," ",$formatted);
+$formatted=str_replace('"','',$formatted);
+$formatted=str_replace("timestamp","",$formatted);
+$formatted=str_replace("notice","",$formatted);
+$formatted=nl2br($formatted);
+print($formatted);
+#print(json_encode($output));
 mysql_close();
 ?>
