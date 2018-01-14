@@ -1,5 +1,11 @@
 <?php
-mysql_connect("localhost", "readonly","readpassword") or die(mysql_error());
+
+# Load password and connect to database
+include("/opt/app/db_settings.php");  
+mysql_connect("localhost", $db_user, $db_pass) or die(mysql_error());  
+unset ($db_user, $db_pass); 
+
+# Select data base
 mysql_select_db("finance");
 
 # TOTAL NUMBER OF QUOTES
