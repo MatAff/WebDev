@@ -26,7 +26,7 @@ $output[]=$todayNews;
 
 # NOTIFICATIONS
 #$sql=mysql_query("SELECT * FROM notification WHERE timestamp > CONVERT_TZ(NOW(),'+4:30','+0:00');");
-$sql=mysql_query("SELECT timestamp, notice FROM notification ORDER BY noticeID DESC LIMIT 10;");
+$sql=mysql_query("SELECT timestamp, notice FROM notification ORDER BY noticeID DESC LIMIT 50;");
 if(!$sql){
 echo "Could not succesfully run query ($sql) from DB: " . mysql_error();
 }
